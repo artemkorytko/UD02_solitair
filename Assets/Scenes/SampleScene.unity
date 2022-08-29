@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlaceCard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7999208047356772770, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
+      propertyPath: isMain
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
 --- !u!4 &11875547 stripped
@@ -520,6 +524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlaceCard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7999208047356772770, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
+      propertyPath: isMain
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
 --- !u!4 &720834851 stripped
@@ -703,6 +711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce45a4a52f8d49c44ae52b5a6a5659c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainPlaceCompleteValue: 52
+  gameCardPlace: []
 --- !u!114 &1187510170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,9 +832,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1706300069}
   - {fileID: 7301094747104270757}
   - {fileID: 1962679196256707622}
-  - {fileID: 1706300069}
   m_Father: {fileID: 1187510171}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -988,6 +998,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583517582}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1602534981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602534982}
+  m_Layer: 0
+  m_Name: Place
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1602534982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602534981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1962679196256707622}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706300068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +1069,7 @@ Transform:
   - {fileID: 1295986391}
   - {fileID: 1248493850}
   m_Father: {fileID: 1276045613}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1895462233
 PrefabInstance:
@@ -1084,6 +1125,10 @@ PrefabInstance:
     - target: {fileID: 3912646221221915507, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
       propertyPath: m_Name
       value: PlaceCard (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999208047356772770, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
+      propertyPath: isMain
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
@@ -1218,6 +1263,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1276045613}
     m_Modifications:
+    - target: {fileID: 1273066256944544148, guid: 90bb05db628fa524c9aa04ed206319c7, type: 3}
+      propertyPath: cardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 831f8df77fb5de641af868336c96db91, type: 2}
+    - target: {fileID: 1273066256944544148, guid: 90bb05db628fa524c9aa04ed206319c7, type: 3}
+      propertyPath: cardPrefab
+      value: 
+      objectReference: {fileID: 2669316806696123681, guid: bb934f514956d7c49861f83bbbfecaae, type: 3}
+    - target: {fileID: 1273066256944544148, guid: 90bb05db628fa524c9aa04ed206319c7, type: 3}
+      propertyPath: showContainer
+      value: 
+      objectReference: {fileID: 1602534982}
     - target: {fileID: 6351367898870401201, guid: 90bb05db628fa524c9aa04ed206319c7, type: 3}
       propertyPath: m_Name
       value: CardDeck
@@ -1332,6 +1389,10 @@ PrefabInstance:
     - target: {fileID: 3912646221221915507, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
       propertyPath: m_Name
       value: PlaceCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999208047356772770, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
+      propertyPath: isMain
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf5db3db1ac7fc418f64d6a3e522785, type: 3}
