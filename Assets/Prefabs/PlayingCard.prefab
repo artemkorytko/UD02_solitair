@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 33678576663325122}
   - component: {fileID: 806832332839017716}
   - component: {fileID: 2097046839719841721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayingCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1750616506957094174}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1800033606529266470}
@@ -112,6 +112,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a247c85e8a7340d78f7e0a9fbe9689e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextCardValue: -1
+  onGameZOffset: -2
+  nextCardColor: 3
+  nextCardType: 5
+  cardContainer: {fileID: 0}
+  isMain: 0
+  meshRenderer: {fileID: 33678576663325122}
+  openCardContainer: {fileID: 1800033606529266470}
+  closeCardContainer: {fileID: 9210392024023602784}
 --- !u!1 &4087620430077247341
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9210392024023602784}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CloseCardContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1800033606529266470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OpenCardContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

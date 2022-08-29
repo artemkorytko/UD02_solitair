@@ -111,6 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e47ac83ff7549a4867c5129c368b2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextCardValue: -1
+  onGameZOffset: -2
+  nextCardColor: 3
+  nextCardType: 5
+  cardContainer: {fileID: 4104512513863534058}
+  isMain: 0
 --- !u!1 &7853434269986658915
 GameObject:
   m_ObjectHideFlags: 0
