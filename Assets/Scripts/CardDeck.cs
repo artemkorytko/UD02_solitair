@@ -50,7 +50,7 @@ namespace DefaultNamespace
             }
         }
 
-        private void RandomizeDeck()
+        public void RandomizeDeck()
         {
             List<PlayingCard> tempList = new List<PlayingCard>();
             while (_cards.Count > 0)

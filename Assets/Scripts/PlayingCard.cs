@@ -66,9 +66,9 @@ namespace DefaultNamespace
                 transform.SetParent(parent.CardContainer);
                 transform.localPosition = Vector3.zero;
                 SetAtMain(parent.IsMain);
-                if (parent is PlayingCard playingCard)
+                if (_parent is PlayingCard playingCard)
                 {
-                  //  playingCard.Open();
+                    playingCard.Open();
                 }
 
                 _parent = parent;

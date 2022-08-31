@@ -446,7 +446,7 @@ Light:
   m_InnerSpotAngle: 21.802082
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -799,6 +799,10 @@ PrefabInstance:
       propertyPath: isMain
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6103148638749625269, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
+      propertyPath: nextCardValue
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
 --- !u!4 &1311977328 stripped
@@ -937,6 +941,10 @@ PrefabInstance:
     - target: {fileID: 6103148638749625269, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
       propertyPath: isMain
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103148638749625269, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
+      propertyPath: nextCardValue
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
@@ -1276,6 +1284,10 @@ PrefabInstance:
       propertyPath: isMain
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6103148638749625269, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
+      propertyPath: nextCardValue
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
 --- !u!4 &2121405266 stripped
@@ -1295,14 +1307,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 250912081}
     m_Modifications:
-    - target: {fileID: 185009225001771921, guid: 6854bb7259de64673952f2e28f15e6cb, type: 3}
-      propertyPath: cardConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: a1a95548d906649e3af4be1bbe711c03, type: 2}
-    - target: {fileID: 185009225001771921, guid: 6854bb7259de64673952f2e28f15e6cb, type: 3}
-      propertyPath: cardPrefab
-      value: 
-      objectReference: {fileID: 2097046839719841721, guid: db5e7fcf04b9d4ea5b6195be43684d21, type: 3}
     - target: {fileID: 185009225001771921, guid: 6854bb7259de64673952f2e28f15e6cb, type: 3}
       propertyPath: showContainer
       value: 
@@ -1472,6 +1476,10 @@ PrefabInstance:
     - target: {fileID: 6103148638749625269, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
       propertyPath: isMain
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103148638749625269, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}
+      propertyPath: nextCardValue
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89de10a84f8bd477688f164ed32dbafc, type: 3}

@@ -63,12 +63,59 @@ namespace DefaultNamespace
             }
         }
 
+        public void Reset()
+        {
+            _cardDeck.Reset();
+            _cardDeck.RandomizeDeck();
+            FillGamePlaces();
+            _mainPlaceInfo.Clear();
+        }
+
         private void OnRemoveFromMain(CardType type, int value)
         {
+            if (_mainPlaceInfo.ContainsKey(type))
+            {
+                _mainPlaceInfo[type] -= value;
+            }
         }
 
         private void OnAddToMain(CardType type, int value)
         {
+            if (_mainPlaceInfo.ContainsKey(type))
+            {
+                _mainPlaceInfo[type] += value;
+            }
+            else
+            {
+                _mainPlaceInfo.Add(type, value);
+            }
+
+            CheckMainPlaces();
+        }
+
+        private void CheckMainPlaces()
+        {
+            var keys = _mainPlaceInfo.Keys;
+            if (keys.Count < 4)
+            {
+                return;
+            }
+
+            bool isWin = true;
+
+            foreach (var key in _mainPlaceInfo.Keys)
+            {
+                if (_mainPlaceInfo[key] != mainPlaceCompleteValue)
+                {
+                    isWin = false;
+                    break;
+                }
+            }
+
+            if (isWin)
+            {
+                OnWin?.Invoke();
+            }
         }
     }
 }
