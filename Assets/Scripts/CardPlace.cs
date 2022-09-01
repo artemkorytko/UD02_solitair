@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class CardPlace : MonoBehaviour
 {
-    [SerializeField] protected int nextCardValue = -1;
+    [SerializeField] protected int nextCardValue = 11;
     [SerializeField] protected float onGameZOffset = -2f;
     [SerializeField] protected CardColor nextCardColor = CardColor.Any;
     [SerializeField] protected CardType nextCardType = CardType.Any;
     [SerializeField] protected Transform cardContainer;
     [SerializeField] protected bool isMain;
 
-    protected bool isOpen = true;
+    protected bool _isOpen = true;
 
     public int NextCardValue => nextCardValue;
 
@@ -24,11 +24,11 @@ public class CardPlace : MonoBehaviour
 
     public bool IsMain => isMain;
 
-    public bool IsOpen => isOpen;
+    public bool IsOpen => _isOpen;
 
     public bool IsCanConnect(PlayingCard playingCard)
     {
-        if (!isOpen) 
+        if (!_isOpen) 
             return false;
         if (playingCard.Value != nextCardValue && nextCardValue != -1) 
             return false;

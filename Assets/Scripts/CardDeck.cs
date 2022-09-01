@@ -49,7 +49,7 @@ public class CardDeck : MonoBehaviour
         }
     }
 
-    private void RandomizeDeck()
+    public void RandomizeDeck()
     {
         List<PlayingCard> tempList = new List<PlayingCard>();
         while (_cards.Count > 0)
@@ -129,7 +129,7 @@ public class CardDeck : MonoBehaviour
         {
             _allCards[i].transform.SetParent(null);
         }
-        
+
         for (int i = 0; i < _allCards.Count; i++)
         {
             _allCards[i].transform.SetParent(showContainer);
@@ -137,7 +137,9 @@ public class CardDeck : MonoBehaviour
             _allCards[i].IsInDeck = true;
             _allCards[i].gameObject.SetActive(false);
         }
-        
+
         _cards.AddRange(_allCards);
     }
 }
+
+
