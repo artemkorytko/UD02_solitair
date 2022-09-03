@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2838346365031770740}
   - component: {fileID: 8385523905753159309}
   - component: {fileID: -6714011374403312430}
+  - component: {fileID: 3498510320038795121}
   m_Layer: 0
   m_Name: CardDeck
   m_TagString: Untagged
@@ -97,3 +98,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.696061, y: 0.5483716, z: 8.872101}
   m_Center: {x: 0, y: 0.2741857, z: 0}
+--- !u!114 &3498510320038795121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810239684887749201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f927e8fd624425dbcb24a80c6ac172f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 969828096230818790, guid: 3a15d20ecb4620d4fb95029d8523eeb4, type: 3}
+  cardConfig: {fileID: 11400000, guid: 390bb340c6eea594d99f4fe1a64ed480, type: 2}
+  showContainer: {fileID: 0}
