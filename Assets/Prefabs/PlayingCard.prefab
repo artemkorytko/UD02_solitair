@@ -165,7 +165,7 @@ MonoBehaviour:
   onGameZOffset: -2
   nextCardColor: 3
   nextCardType: 5
-  cardContainer: {fileID: 6189836413574345348}
+  cardContainer: {fileID: 0}
   isMain: 0
   meshRenderer: {fileID: 8899456701902926923}
   openCardContainer: {fileID: 7202053670614400268}
