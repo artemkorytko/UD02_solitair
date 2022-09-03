@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372312702761228939}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.5, y: 0, z: 4.2}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf082dbce615a3443a9211c4a7fe2527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 7616047760312265635, guid: 29b98a4b50d6d0e458c492bc92d1a5f1, type: 3}
+  cardConfig: {fileID: 11400000, guid: d76526f50abb8564598e63d6b37bee63, type: 2}
+  showContainer: {fileID: 0}
 --- !u!65 &6929494151794361222
 BoxCollider:
   m_ObjectHideFlags: 0

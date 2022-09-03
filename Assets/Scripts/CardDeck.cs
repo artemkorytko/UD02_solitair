@@ -45,7 +45,7 @@ public class CardDeck : MonoBehaviour
         }
     }
     
-    private void RandomizeDeck()
+    public void RandomizeDeck()
     {
         var tempList = new List<PlayingCard>();
 

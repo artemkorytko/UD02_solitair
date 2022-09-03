@@ -6,10 +6,10 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private int mainPlaceCompletedValue = 52;
     [SerializeField] private CardPlace[] gameCardPlaces;
-    
+
     private CardDeck _cardDeck;
     private PlayerController _playerController;
-    private readonly Dictionary<CardType, int> mainPlaceInfo = new Dictionary<CardType, int>();
+    private readonly Dictionary<CardType, int> _mainPlaceInfo = new Dictionary<CardType, int>();
 
     public event Action OnWin;
 
@@ -59,14 +59,60 @@ public class GameController : MonoBehaviour
             card.Open();
         }
     }
-    
+
+    public void Reset()
+    {
+        _cardDeck.Reset();
+        _cardDeck.RandomizeDeck();
+        FillGamePlaces();
+        _mainPlaceInfo.Clear();
+    }
+
     private void OnAddToMain(CardType type, int value)
     {
-        throw new NotImplementedException();
+        if (_mainPlaceInfo.ContainsKey(type))
+        {
+            _mainPlaceInfo[type] += value;
+        }
+        else
+        {
+            _mainPlaceInfo.Add(type, value);
+        }
+
+        CheckMainPlaces();
     }
-    
+
     private void OnRemoveMain(CardType type, int value)
     {
-        throw new NotImplementedException();
+        if (_mainPlaceInfo.ContainsKey(type))
+        {
+            _mainPlaceInfo[type] -= value;
+        }
+    }
+    
+    private void CheckMainPlaces()
+    {
+        var keys = _mainPlaceInfo.Keys;
+        
+        if (keys.Count < 4)
+        {
+            return;
+        }
+
+        bool isWin = true;
+
+        foreach (var key in _mainPlaceInfo.Keys)
+        {
+            if (_mainPlaceInfo[key] != mainPlaceCompletedValue)
+            {
+                isWin = false;
+                break;
+            }
+        }
+
+        if (isWin)
+        {
+            OnWin?.Invoke();
+        }
     }
 }

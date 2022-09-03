@@ -58,14 +58,14 @@ public class PlayingCard : CardPlace
         {
             transform.SetParent(parent.CardContainer);
             transform.localPosition = Vector3.zero;
-
-            if (parent is PlayingCard playingCard)
+            SetAtMain(parent.IsMain);
+            if (_parent is PlayingCard playingCard)
             {
-                //playingCard.Open();
+                playingCard.Open();
             }
 
             _parent = parent;
-            SetAtMain(parent.IsMain);
+            
         }
     }
 
