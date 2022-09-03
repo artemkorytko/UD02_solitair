@@ -4,48 +4,46 @@ namespace DefaultNamespace
 {
     public class CardPlace : MonoBehaviour
     {
-        public class CardPlace : MonoBehaviour
+        [SerializeField] protected int nextCardValue = -1; //индекс следующей карты
+        [SerializeField] protected float onGameZOffset = -2f; 
+        [SerializeField] protected CardColor nextCardColor = CardColor.Any; //цвет карты который можем положить - любой по умолчанию
+        [SerializeField] protected CardType nextCardType = CardType.Any; //тип - -любой по  умолчанию
+        [SerializeField] protected Transform cardContainer; //трансфор, относительно его становится карта
+        [SerializeField] protected bool isMain; // главная ли площадка
+
+        protected bool _isOpen = true; //открыта ли площадка
+
+        public int NextCardValue => nextCardValue;
+
+        public CardColor NextCardColor => nextCardColor;
+
+        public CardType NextCardType => nextCardType;
+
+        public Transform CardContainer => cardContainer;
+
+        public bool IsMain => isMain;
+
+        public bool IsOpen => _isOpen;
+
+        public bool IsCanConnect(PlayingCard playingCard) //можно ли положить карту PlayingCard playingCard на площадку 
         {
-            [SerializeField] protected int nextCardValue = -1;
-            [SerializeField] protected float onGameZOffset = -2f;
-            [SerializeField] protected CardColor nextCardColor = CardColor.Any;
-            [SerializeField] protected CardType nextCardType = CardType.Any;
-            [SerializeField] protected Transform cardContainer;
-            [SerializeField] protected bool isMain;
+            if (!_isOpen) //нельзя положить, если не открыта
+                return false;
 
-            protected bool _isOpen = true;
+            if (playingCard.Value != nextCardValue && nextCardValue != -1) //индекс текущей карты не равен индексу, который ждем и  текущая карта не свободна
+                return false;
 
-            protected int NextCardValue => nextCardValue;
+            if (nextCardColor != CardColor.Any && playingCard.Color != nextCardColor) // сравноние по цвветц 
+                return false;
 
-            protected CardColor NextCardColor => nextCardColor;
+            if (nextCardType != CardType.Any && playingCard.Type != nextCardType) // сравнение по масти
+                return false;
 
-            protected CardType NextCardType => nextCardType;
-
-            protected Transform CardContainer => cardContainer;
-
-            protected bool IsMain => isMain;
-
-            protected bool IsOpen => _isOpen;
-
-            public bool IsCanConnect(PlayingCard playingCard)
-            {
-                if (!_isOpen)
-                    return false;
-
-                if (playingCard.Value != nextCardValue && nextCardValue != -1)
-                    return false;
-
-                if (nextCardColor != CardColor.Any && playingCard.Color != nextCardColor)
-                    return false;
-
-                if (nextCardType != CardType.Any && playingCard.Type != nextCardType)
-                    return false;
-
-                Vector3 position = playingCard.CardContainer.transform.localPosition;
-                position.z = isMain ? 0f : onGameZOffset;
-                playingCard.CardContainer.localPosition = position;
-                return true;
-            }
+            Vector3 position = playingCard.CardContainer.localPosition; //
+            position.z = isMain ? 0f : onGameZOffset; //верхняя карта? тогда позиция 0, иначе позиция onGameZOffset
+            playingCard.CardContainer.localPosition = position; //текущей карте присваиваем эту позицию 
+            return true;
         }
     }
 }
+

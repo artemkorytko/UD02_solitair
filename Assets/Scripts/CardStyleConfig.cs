@@ -2,13 +2,16 @@
 
 namespace DefaultNamespace
 {
-    [CreateAssetMenu(fileName = "CardStyleConfig", menuName = "MENUNAME", order = 0)]
+    [CreateAssetMenu(fileName = "CardStyleConfig", menuName = "Configs/CardStyleConfig", order = 0)]
     public class CardStyleConfig : ScriptableObject
     {
-        [SerializeField] private Material[] Diamonds;
-        [SerializeField] private Material[] Hearts;
-        [SerializeField] private Material[] Cubes;
-        [SerializeField] private Material[] Spades;
-        
+        [SerializeField] private Material[] diamonds;
+        [SerializeField] private Material[] hearts;
+        [SerializeField] private Material[] clubes;
+        [SerializeField] private Material[] spades;
+        public Material[] Diamonds => diamonds;
+        public Material[] Hearts => hearts;
+        public Material[] Clubes => clubes;
+        public Material[] Spades => spades;
     }
 }
