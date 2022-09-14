@@ -6,18 +6,18 @@ namespace DefaultNamespace
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] private int mainPlaceCompleteValue = 52; //сколько нужно собрать карт, чтобы засчиталась победа
-        [SerializeField] private CardPlace[] gameCardPlaces; //массив плесов
+        [SerializeField] private int mainPlaceCompleteValue = 52;
+        [SerializeField] private CardPlace[] gameCardPlaces; //
 
-        private CardDeck _cardDeck; //ссылка на колоду
-        private PlayerController _playerController; //ссылка на игрока
-        private readonly Dictionary<CardType, int> _mainPlaceInfo = new Dictionary<CardType, int>(); 
+        private CardDeck _cardDeck;
+        private PlayerController _playerController;
+        private readonly Dictionary<CardType, int> _mainPlaceInfo = new Dictionary<CardType, int>();
 
-        public event  Action OnWin;
+        public event Action OnWin;
 
         private void Awake()
         {
-            _playerController = FindObjectOfType<PlayerController>();//запполняем ссылку
+            _playerController = FindObjectOfType<PlayerController>();
             _cardDeck = FindObjectOfType<CardDeck>();
         }
 
@@ -36,8 +36,8 @@ namespace DefaultNamespace
 
         private void GenerateField()
         {
-            _cardDeck.Initialize(); //сгенерировать колоду
-            FillGamePlaces(); //заполнить игровое пространство
+            _cardDeck.Initialize();
+            FillGamePlaces();
         }
 
         private void FillGamePlaces()
@@ -45,19 +45,18 @@ namespace DefaultNamespace
             for (int i = 0; i < gameCardPlaces.Length; i++)
             {
                 int counter = i;
-                CardPlace cardPlace = gameCardPlaces[i]; //ссылка на текущий кардплейс
-                PlayingCard card = null; //временную ссылку, которую получаем из колоды
-                
-                //предыдущие карты будут закрыты
+                CardPlace cardPlace = gameCardPlaces[i];
+                PlayingCard card = null;
+
                 while (counter > 0)
                 {
-                    card = _cardDeck.GetCard(); //получить карту из колоды
-                    card.SetParent(cardPlace); //устанавливаем родителя
-                    card.Close();//
-                    cardPlace = card; //обновляем крдплейс -  следующую карту кладем на предыдущую
-                    counter--;//уменьшаем счетчик 
+                    card = _cardDeck.GetCard();
+                    card.SetParent(cardPlace);
+                    card.Close();
+                    cardPlace = card;
+                    counter--;
                 }
-                //последние карты будут открыта
+
                 card = _cardDeck.GetCard();
                 card.SetParent(cardPlace);
                 card.Open();
@@ -76,17 +75,25 @@ namespace DefaultNamespace
         {
             if (_mainPlaceInfo.ContainsKey(type))
             {
-                //_mainPlaceInfo(type) += value;
+                _mainPlaceInfo[type] -= value;
+            }
+        }
+
+        private void OnAddToMain(CardType type, int value)
+        {
+            if (_mainPlaceInfo.ContainsKey(type))
+            {
+                _mainPlaceInfo[type] += value;
             }
             else
             {
-                _mainPlaceInfo.Add(type,value);
+                _mainPlaceInfo.Add(type, value);
             }
 
-            CheMainPLaces();
+            CheckMainPlaces();
         }
 
-        private void CheMainPLaces()
+        private void CheckMainPlaces()
         {
             var keys = _mainPlaceInfo.Keys;
             if (keys.Count < 4)
@@ -94,7 +101,7 @@ namespace DefaultNamespace
                 return;
             }
 
-            bool isWin;
+            bool isWin = true;
 
             foreach (var key in _mainPlaceInfo.Keys)
             {
@@ -104,10 +111,11 @@ namespace DefaultNamespace
                     break;
                 }
             }
-        }
 
-        private void OnAddToMain(CardType type, int value)
-        {
+            if (isWin)
+            {
+                OnWin?.Invoke();
+            }
         }
     }
 }

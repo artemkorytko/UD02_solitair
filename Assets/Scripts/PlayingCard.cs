@@ -5,11 +5,11 @@ namespace DefaultNamespace
     public class PlayingCard : CardPlace
     {
         [SerializeField] private MeshRenderer meshRenderer; //доступ к материалам в мешрендер
-        [SerializeField] private Transform openCardContainer; //положение закрытых карт
+        [SerializeField] private Transform openCardContainer; //положение opened карт
         [SerializeField] private Transform closeCardContainer; //положение закрытых карт
 
         private int _value;
-        private CardColor _color; 
+        private CardColor _color;
         private CardType _type; //масть
         private CardPlace _parent; //куда перетаскиваем карту
 
@@ -31,11 +31,14 @@ namespace DefaultNamespace
             meshRenderer.material = material; //инициализация себя
 
             nextCardValue = _value - 1; //можем положить карту ниже нас достоинством
-            nextCardColor = _color == CardColor.Red ? CardColor.Black : CardColor.Red; // если цвет нашей карты красный на себя можем положить черный
+            nextCardColor =
+                _color == CardColor.Red
+                    ? CardColor.Black
+                    : CardColor.Red; // если цвет нашей карты красный на себя можем положить черный
             nextCardType = CardType.Any; //инициализация следующей карты
         }
 
-        public async void Open()
+        public void Open()
         {
             if (_isOpen) return;
 
@@ -44,7 +47,7 @@ namespace DefaultNamespace
             transform.Rotate(Vector3.forward * 180f, Space.Self);
         }
 
-        public async void Close()
+        public void Close()
         {
             if (!_isOpen) return;
 
@@ -65,10 +68,11 @@ namespace DefaultNamespace
                 transform.SetParent(parent.CardContainer);
                 transform.localPosition = Vector3.zero;
                 SetAtMain(parent.IsMain);
-                if (parent is PlayingCard playingCard) //если стаавим на игравую карту
+                if (_parent is PlayingCard playingCard) //если стаавим на игравую карту
                 {
                     playingCard.Open();
                 }
+
                 _parent = parent;
                 //SetAtMain(parent.IsMain);
             }

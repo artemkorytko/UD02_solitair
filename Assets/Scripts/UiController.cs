@@ -11,17 +11,14 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            
         }
 
         private void OnDestroy()
         {
-            
         }
 
         public void onWin()
         {
-            
         }
     }
 }

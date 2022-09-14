@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,9 +7,11 @@ namespace DefaultNamespace
 {
     public class CardDeck : MonoBehaviour
     {
-        [SerializeField] private PlayingCard cardPrefab;
-        [SerializeField] private CardStyleConfig cardConfig;
-        [SerializeField] private Transform showContainer; // ссылка на то место, куда скажем достать карту из колоды
+        [SerializeField] private PlayingCard cardPrefab; //игровая карта
+        [SerializeField] private CardStyleConfig cardConfig; //конфиг всех карт 
+
+        [SerializeField]
+        private Transform showContainer; // ссылка на то место, рядом с колодой, куда скажем достать карту из колоды
 
         private readonly List<PlayingCard> _cards = new List<PlayingCard>(); //храним текущие карты
         private readonly List<PlayingCard> _allCards = new List<PlayingCard>(); //храним все карты
@@ -22,11 +23,12 @@ namespace DefaultNamespace
         {
             _meshRenderer = GetComponent<MeshRenderer>(); //заполнили сссылку
         }
-        
+
         public void Initialize()
         {
             GenerateCards();
-            _allCards.AddRange(_cards); //созданный массив добавили в массив всех кард , для ссверки - собраны ли все карты
+            _allCards.AddRange(
+                _cards); //созданный массив добавили в массив всех кард , для ссверки - собраны ли все карты
             RandomizeDeck();
         }
 
@@ -38,15 +40,17 @@ namespace DefaultNamespace
             GenerateType(CardType.Clubs, CardColor.Black, cardConfig.Clubes);
         }
 
-        private void GenerateType(CardType type, CardColor color, Material[] materials)
+        private void GenerateType(CardType type, CardColor color, Material[] materials) //генерация карты
         {
             for (int i = 0; i < materials.Length; i++)
             {
-                PlayingCard newCard = Instantiate(cardPrefab, showContainer); //создаем карту, и положение карты(новый родитель CardPlace)
+                PlayingCard
+                    newCard = Instantiate(cardPrefab,
+                        showContainer); //создаем карту, и положение карты(новый родитель CardPlace)
                 newCard.Initialize(i, color, type, materials[i]); //инициализация новой карты
                 newCard.gameObject.SetActive(false);
                 newCard.Close(); //переворачиваем карту
-                _cards.Add(newCard);//добавляем в массив всех карт
+                _cards.Add(newCard); //добавляем в массив всех карт
             }
         }
 
@@ -56,7 +60,7 @@ namespace DefaultNamespace
             while (_cards.Count > 0) //пока есть карты в колоде
             {
                 int randomIndex = Random.Range(0, _cards.Count); //рандомная  карта 
-                tempList.Add(_cards[randomIndex]); //во впеменный лист добавляем карту из колоды 
+                tempList.Add(_cards[randomIndex]); //во временный лист добавляем карту из колоды 
                 _cards.RemoveAt(randomIndex); //удаляем из колоды карт
             }
 
@@ -74,7 +78,7 @@ namespace DefaultNamespace
             return card;
         }
 
-        public void ExcludeCurrentCard()  //
+        public void ExcludeCurrentCard() //
         {
             _cards[_currentShown].IsInDeck = false; //карта больше не в колоде
             _cards.RemoveAt(_currentShown); //удалить карту 
@@ -90,7 +94,8 @@ namespace DefaultNamespace
             }
         }
 
-        private void OnMouseUpAsButton() //метод юнити , определяет что мы кликнули на объект у которого есть коллайдер и 
+        private void
+            OnMouseUpAsButton() //метод юнити , определяет что мы кликнули на объект у которого есть коллайдер и 
         {
             ShowNext();
         }
@@ -105,7 +110,9 @@ namespace DefaultNamespace
 
             _currentShown++; //увеличиваем индекс
 
-            if (_currentShown == _cards.Count - 1 && _meshRenderer.enabled) //если дошли до последней карты (индекс = индексу последней карты)  и колода включена
+            if (_currentShown == _cards.Count - 1 &&
+                _meshRenderer
+                    .enabled) //если дошли до последней карты (индекс = индексу последней карты)  и колода включена
             {
                 _cards[_currentShown].gameObject.SetActive(true); //показываем  карту последнюю в колоде
                 _cards[_currentShown].Open(); //открываем карту логически
@@ -138,6 +145,7 @@ namespace DefaultNamespace
                 _allCards[i].IsInDeck = true;
                 _allCards[i].gameObject.SetActive(false);
             }
+
             _cards.AddRange(_allCards);
         }
     }

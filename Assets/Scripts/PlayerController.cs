@@ -103,7 +103,7 @@ namespace DefaultNamespace
             _holdCard = null;
         }
 
-        private void MoveCardWithMouse()
+        private void MoveCardWithMouse() //двигать карту за мышью
         {
             Vector3 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = _holdCard.transform.position.z;
